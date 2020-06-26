@@ -8,6 +8,19 @@ extension Color {
     static let lightEnd = Color(red: 30 / 255, green: 80 / 255, blue: 120 / 255)
     
 }
+struct LightBackground<S: Shape>: View {
+    var isHighlighted: Bool
+    var shape: S
+
+    var body: some View {
+        shape
+            .fill(Color.offWhite)
+            .frame(width: 300, height: 300)
+            .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
+            .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+        
+    }
+}
 struct DarkToggleStyle: ToggleStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         Button(action: {
